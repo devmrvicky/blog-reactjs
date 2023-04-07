@@ -65,7 +65,7 @@ function App() {
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
     const datetime = format(new Date(), "MMMM dd, yyyy pp");
     const newPost = { id, ...postsBody, datetime };
-    try {
+    try { 
       const response = await api.post("/posts", newPost);
       const postList = [...posts, response.data];
       setPost(postList);
