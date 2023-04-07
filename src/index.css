@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  position: relative;
+}
+
+.contact-form {
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+}
+
+@media (max-width: 768px) {
+
+  .pages {
+    top: -100%;
+    visibility: hidden;
+  }
+
+  .pages.pull-down {
+    top: 100%;
+    visibility: visible;
+  }
+}
+
+/* container element */
+/* .container {
+  position: relative;
+  height: 400px;
+  overflow-y: scroll;
+} */
+
+/* scrollbar */
+::-webkit-scrollbar {
+  position: absolute;
+  right: 10px;
+  width: 8px;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+}
+
+/* scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+

@@ -1,0 +1,11 @@
+export {default as Header} from './Header'
+export {default as Nav} from './Nav'
+export {default as Footer} from './Footer'
+// export pages
+export {default as Home} from './pages/Home'
+export {default as About} from './pages/About'
+export {default as Contact} from './pages/contact/Contact'
+export {default as PostPage} from './pages/PostPage'
+export {default as NewPost} from './pages/NewPost'
+export {default as PageNotFound} from './pages/PageNotFound'
+export {default as EditPost} from './pages/EditPost'
