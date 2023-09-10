@@ -1,21 +1,11 @@
-import { format } from "date-fns";
-import { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import {
-  Home,
-  Header,
-  Nav,
-  Footer,
-  About,
-  Contact,
-  PostPage,
-  NewPost,
-  PageNotFound,
-  EditPost,
-} from "./components/index";
+import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "./api/posts";
+import { format } from "date-fns";
 
-function App() {
+const DataContext = createContext({});
+
+export const DataProvider = ({ children }) => {
   // expand search box
   const [expandSearchBox, setExpandSearchBox] = useState(false);
   // posts
@@ -113,48 +103,25 @@ function App() {
   }, [posts, search]);
 
   return (
-    <div className="App flex flex-col h-screen relative">
-      <Header
-        // expandSearchBox={expandSearchBox}
-        // setExpandSearchBox={setExpandSearchBox}
-        // search={search}
-        // setSearch={setSearch}
-      />
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home posts={searchResults} />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route
-          path="/postpage/:id"
-          element={<PostPage posts={posts} handleDelete={handleDelete} />}
-        />
-        <Route
-          path="/newpost"
-          element={
-            <NewPost
-              postsBody={postsBody}
-              setPostsBody={setPostsBody}
-              handleSubmit={handleSubmit}
-            />
-          }
-        />
-        <Route
-          path="/editpost/:id"
-          element={
-            <EditPost
-              posts={posts}
-              handleEdit={handleEdit}
-              editPost={editPost}
-              setEditPost={setEditPost}
-            />
-          }
-        />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-      <Footer />
-    </div>
+    <DataContext.Provider
+      value={{
+        expandSearchBox,
+        setExpandSearchBox,
+        search,
+        setSearch,
+        posts,
+        handleDelete,
+        postsBody,
+        setPostsBody,
+        handleSubmit,
+        handleEdit,
+        editPost,
+        setEditPost,
+      }}
+    >
+      {children}
+    </DataContext.Provider>
   );
-}
+};
 
-export default App;
+export default DataContext;
