@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { FaPlus, FaSearch } from "react-icons/fa";
 import Logo from "./Logo";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import DataContext from "../DataContext";
 
-const Header = ({ expandSearchBox, setExpandSearchBox, search, setSearch }) => {
+const Header = () => {
   const [isPullDown, setIsPullDown] = useState(false);
+  const { expandSearchBox, setExpandSearchBox, search, setSearch } = useContext(DataContext)
+  console.log(useContext(DataContext))
 
   return (
     <header className="bg-cyan-50">
